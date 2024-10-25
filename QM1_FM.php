@@ -96,8 +96,8 @@
                         <?php echo "Either $var = $d or $var = $e"; ?>
                     </p>
                     <div class="links">
-                        <a href="../Personal_Blog/QM1_FM.html" class="links">Formular Method</a>
-                        <a href="../Personal_Blog/_____QMain____.html" class="btn btn-danger"><< Homepage</a>
+                        <a href="QM1_FM.html" class="links">Formular Method</a>
+                        <a href="index.html" class="btn btn-danger"><< Homepage</a>
                     </div>
                 </div>
             </div>
