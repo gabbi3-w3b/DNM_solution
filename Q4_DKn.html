@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Problem Type</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            
+            background-color: #ebe9e9;
+            color: #0044ff;
+            
+        }
+        .random-questions {
+            display: none;
+            margin-top: 20px;
+        }
+        .question-card {
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center my-5">
+    <h1 class="title">What type of quadratic problem do you have?</h1>
+    <form action="Q4_DKn.php" method="post" id="quadraticForm">
+        <div class="form-group">
+            <label>Enter equation (ax^2 + bx + c = 0)</label>
+            <input type="text" id="equationInput" name="equation" class="form-control" placeholder="e.g., x^2 + 5x + 6 = 0" required>
+            <button type="submit" class="btn btn-primary me-2 mt-3">Solve</button>
+        </div>
+        <br>
+        <a href="#" class="btn btn-info" id="randomQuestionsToggle"><i>Random questions?</i></a>
+        <a href="../Personal_Blog/_____QMain____.html" class="btn btn-danger">Return</a>
+    </form>
+    <br>
+    <div class="random-questions" id="randomQuestionsContainer">
+        <h2>Random Quadratic Questions</h2>
+        <div id="questionsList"></div>
+    </div>
+    <!-- The Solve Using Button will be dynamically added here after form submission -->
+    <div id="solutionMethodContainer" style="display: none;">
+        <h2>Recommended Method</h2>
+        <p id="methodDisplay"></p>
+        <button id="solveUsingButton" class="btn btn-success" onclick="redirectToSolve()">SOLVE USING /*the method identified*/</button>
+    </div>
+</div>
+
+<script>
+const questions = [
+    "Solve for x: 2x^2 + 3x - 5 = 0",
+    "Find the roots of: x^2 - 4x + 4 = 0",
+    "Determine the x-intercepts: x^2 + 2x - 8 = 0",
+    "What are the solutions for: 3x^2 - 6x + 2 = 0",
+    "Solve the equation: x^2 + 5x + 6 = 0",
+    "Find the vertex of: 4x^2 + 4x - 1 = 0",
+    "Calculate the discriminant for: x^2 - 2x + 1 = 0",
+
+    // Add more questions up to 107...
+    "Solve for: 2x^2 + 4x = 0",
+    "Solve for: x^2 - 3x = 0",
+    "Solve for: 3x^2 - 2x = 0",
+    "Solve for: 4x^2 + 5x = 0",
+    "Solve for: x^2 + 2x = 0",
+    "Solve for: 5x^2 - 4x = 0",
+    "Solve for: 2x^2 - x = 0",
+    "Solve for: x^2 + 6x = 0",
+    "Solve for: 3x^2 + 2x = 0",
+    "Solve for: 4x^2 - 3x = 0",
+    "Solve for: x^2 = 16",
+    "Solve for: 2x^2 - 5 = 0",
+    "Solve for: x^2 + 2x - 8 = -3",
+    "Solve for: 3x^2 = 2x + 5",
+    "Solve for: x^2 - 4 = 0",
+    "Solve for: 2x^2 + x = 6",
+    "Solve for: x^2 - 2x = 3",
+    "Solve for: 4x^2 = 3x - 2",
+    "Solve for: x^2 + 1 = 0",
+    "Solve for: 5x^2 - 2 = 0",
+    "Solve for: 4x^2 + 3x - 2 = 0",
+    "Solve for: x^2 - 7x + 12 = 0",
+    "Solve for: 3x^2 + 2x - 5 = 0",
+    "Solve for: 2x^2 - 4x - 3 = 0",
+    "Solve for: x^2 + 2x - 6 = 0",
+    "Solve for: 5x^2 - 2x - 1 = 0",
+    "Solve for: x^2 - 3x - 4 = 0",
+    "Solve for: 2x^2 + 5x + 3 = 0",
+    "Solve for: 4x^2 - 3x + 2 = 0",
+    "Solve for: x^2 + 4x + 4 = 0",
+    "Solve for: 3x^2 + 5x - 2 = 0",
+    "Solve for: 2x^2 - 2x - 6 = 0",
+    "Solve for: x^2 + 3x - 7 = 0",
+    "Solve for: 5x^2 + 4x + 1 = 0",
+    "Solve for: 4x^2 - 5x - 3 = 0",
+    "Solve for: x^2 - 2x - 8 = 0",
+    "Solve for: 3x^2 - 4x + 2 = 0",
+    "Solve for: 2x^2 + 3x - 4 = 0",
+    "Solve for: x^2 + 5x + 6 = 0",
+    "Solve for: 5x^2 - 3x - 2 = 0",
+    "Solve for: 4x^2 + 2x - 1 = 0",
+    "Solve for: x^2 - 4x - 5 = 0",
+    "Solve for: 3x^2 + 4x + 2 = 0",
+    "Solve for: 2x^2 - 5x - 3 = 0",
+    "Solve for: x^2 + 6x + 8 = 0",
+    "Solve for: 5x^2 + 2x - 4 = 0",
+    "Solve for: 4x^2 - 2x - 6 = 0",
+    "Solve for: x^2 + 2x - 3 = 0",
+    "Solve for: 3x^2 - 5x + 1 = 0",
+    "Solve for: 2x^2 + 4x + 5 = 0",
+    "Solve for: x^2 - 5x - 6 = 0",
+    "Solve for: 5x^2 - 4x + 3 = 0",
+    "Solve for: 4x^2 + 5x + 2 = 0",
+    "Solve for: x^2 + 3x - 2 = 0",
+    "Solve for: 3x^2 - 2x - 7 = 0",
+    "Solve for: 2x^2 + 2x - 5 = 0",
+    "Solve for: x^2 + 4x + 1 = 0",
+    "Solve for: 5x^2 + 3x - 2 = 0",
+    "Solve for: 4x^2 - 6x - 4 = 0",
+    "Solve for: x^2 - 3x - 9 = 0",
+    "Solve for: 3x^2 + 6x + 5 = 0",
+    "Solve for: 2x^2 - 3x - 2 = 0",
+    "Solve for: x^2 + 5x - 4 = 0",
+    "Solve for: 5x^2 - 5x + 1 = 0",
+    "Solve for: 4x^2 + 4x - 3 = 0",
+    "Solve for: x^2 - 6x - 8 = 0",
+    "Solve for: 3x^2 - 3x - 2 = 0",
+    "Solve for: 2x^2 + 5x + 2 = 0",
+    "Solve for: x^2 + 2x - 9 = 0",
+    "Solve for: 5x^2 - 2x - 5 = 0",
+    "Solve for: 2x^2 + 4x = 0",
+    "Solve for: x^2 - 3x = 0",
+    "Solve for: 3x^2 - 2x = -4",
+    // ad more kayan aiki
+
+    
+];
+
+function getRandomQuestion() {
+    const randomIndex = Math.floor(Math.random() * questions.length);
+    return questions[randomIndex].split(': ')[1]; // Extract only the equation part
+}
+
+document.getElementById('randomQuestionsToggle').onclick = function(event) {
+    event.preventDefault(); // Prevent the default anchor behavior
+    const randomQuestion = getRandomQuestion();
+    document.getElementById('equationInput').value = randomQuestion; // Set the input field value
+};
+
+document.getElementById('quadraticForm').onsubmit = function() {
+    const input = document.getElementById('equationInput').value;
+    // If input is empty, set it to a random question
+    if (!input) {
+        document.getElementById('equationInput').value = getRandomQuestion();
+    }
+};
+
+// Function to redirect to solve page
+function redirectToSolve() {
+    const method = document.getElementById('methodDisplay').innerText;
+    const equation = document.getElementById('equationInput').value;
+    const url = `../Personal_Blog/QM1_FM.html?method=${encodeURIComponent(method)}&equation=${encodeURIComponent(equation)}`;
+    window.location.href = url;
+}
+
+// This function would be called when the PHP page returns the identified method
+function showMethod(method) {
+    document.getElementById('methodDisplay').innerText = method;
+    document.getElementById('solutionMethodContainer').style.display = 'block';
+}
+</script>
+
+</body>
+</html>

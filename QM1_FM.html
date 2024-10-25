@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formular-method</title>
+    <link href="bootstrap-5.0.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .container{
+            background-color: #6269a3;
+        }
+        .bdy {
+
+            background-color: #393d5b;
+
+        }
+
+        .h21 {
+            font-weight: 50;
+            font-size: 15px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: rgb(121, 210, 127);
+        }
+
+        .nill {
+            padding-left: 400px;
+            padding-top: 10px;
+            
+
+            color: rgb(93, 179, 134);
+        }
+    </style>
+</head>
+
+<body class="bdy">
+    <center>
+        <form action="QM1_FM.php" method="get">
+
+            <div class="container">
+
+                <div class="row w-24 shadow p-5 mt-4">
+
+                    <font color="lightgreen">
+                        <h1>Solution Formular method!</h1>
+                        <h2 class="h21"><i>"Form x=(-b±√(b^2-4ac))/2a"</i></h2>
+                    </font>
+
+                    <input type="number" name="ath" class="form-control my-3" placeholder="insert ath digit" required>
+                    <input type="number" name="bth" class="form-control my-3" placeholder="insert bth digit" required>
+                    <input type="number" name="cth" class="form-control my-3" placeholder="insert cth digit" required>
+                    <input type="text" name="dth" class="form-control my-3"
+                        placeholder="Insert the unknown variable(Optional)" name="unknown">
+                    <input type="submit" name="find" value="Solve" class="btn btn-success">
+
+                    <div class="nill">
+
+                        <a href="../Personal_Blog/_____QMain____.html" class="btn btn-danger">return</a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </form>
+    </center>
+
+</body>
+
+</html>
