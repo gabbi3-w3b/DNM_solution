@@ -36,7 +36,7 @@
         </div>
         <br>
         <a href="#" class="btn btn-info" id="randomQuestionsToggle"><i>Random questions?</i></a>
-        <a href="../Personal_Blog/_____QMain____.html" class="btn btn-danger">Return</a>
+        <a href="index.html" class="btn btn-danger">Return</a>
     </form>
     <br>
     <div class="random-questions" id="randomQuestionsContainer">
@@ -163,7 +163,7 @@ document.getElementById('quadraticForm').onsubmit = function() {
 function redirectToSolve() {
     const method = document.getElementById('methodDisplay').innerText;
     const equation = document.getElementById('equationInput').value;
-    const url = `../Personal_Blog/QM1_FM.html?method=${encodeURIComponent(method)}&equation=${encodeURIComponent(equation)}`;
+    const url = `QM1_FM.html?method=${encodeURIComponent(method)}&equation=${encodeURIComponent(equation)}`;
     window.location.href = url;
 }
 
