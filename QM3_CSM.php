@@ -98,8 +98,8 @@
                         </div>
 
                         <button type="submit" class="btn btn-secondary" name="find">Factorize</button>
-                    <a href="../Personal_Blog/QM2_FzM.html" class="btn btn-info">Return</a>
-                    <a href="../Personal_Blog/_____QMain____.html" class="btn btn-danger">Home page</a>
+                    <a href="QM2_FzM.html" class="btn btn-info">Return</a>
+                    <a href="index.html" class="btn btn-danger">Home page</a>
                     </form>
 
                 </div>
