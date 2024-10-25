@@ -71,7 +71,7 @@ if (isset($_POST['equation'])) {
                 <p>Recommended solution method: <?= htmlspecialchars($method) ?></p>
                 <button id="solveUsingButton" class="btn btn-success" onclick="redirectToSolve('<?= htmlspecialchars($method) ?>', '<?= htmlspecialchars($equation) ?>')">SOLVE USING <?= htmlspecialchars($method) ?></button>
                 <p>No need to solve. This page is for identification purposes only.</p>
-                <a href="../Personal_Blog/Q4_DKn.html" class="btn btn-secondary">Back</a>
+                <a href="Q4_DKn.html" class="btn btn-secondary">Back</a>
             </div>
 
             <script>
@@ -81,13 +81,13 @@ if (isset($_POST['equation'])) {
                     // Determine the subpage based on the method
                     switch (method) {
                         case 'Use factorization method.':
-                            url = '../Personal_Blog/QM2_FzM.html';
+                            url = 'QM2_FzM.html';
                             break;
                         case 'Use formula method.':
-                            url = '../Personal_Blog/QM1_FM.html';
+                            url = 'QM1_FM.html';
                             break;
                         case 'Use completing the square method.':
-                            url = '../Personal_Blog/QM3_CSM.html';
+                            url = 'QM3_CSM.html';
                             break;
                         default:
                             alert('Unknown method!');
